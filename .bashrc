@@ -12,19 +12,15 @@ shopt -s globstar
 shopt -s checkjobs
 
 alias bs='cat ~/.bash_history | grep'
-alias cp='rsync -avP'
 alias feh='feh -d.Z $@'
 alias mount='udisksctl mount -b'
+alias cp='rsync -avP'
 alias mv='rsync -avP --remove-source-files'
-alias nedit='sudo -E hx /etc/nixos/configuration.nix /etc/nixos/nixos-config/modules/frivermen-home.nix'
-alias nsearch=nix-search
-alias nswitch='sudo nixos-rebuild switch'
-alias rcp=/run/current-system/sw/bin/cp
-alias rmv=/run/current-system/sw/bin/mv
+alias cp-orig=/usr/bin/cp
+alias mv-orig=/usr/bin/mv
+alias can='tail -n +1 $@'
 
-if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
-  . "/nix/store/8k5wzz9kg2ddl4xrfl7nn18g1z6x8rs2-bash-completion-2.17.0/etc/profile.d/bash_completion.sh"
-fi
+source /etc/profile.d/bash_completion.sh
 
 GREEN='\[\e[01;32m\]'
 RED='\[\e[01;31m\]'
@@ -37,20 +33,6 @@ PATH="$PATH:~/bin"
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r;"
 export EDITOR=hx
 export VISUAL=hx
-export NIXPKGS_ALLOW_INSECURE=1
-export NIXPKGS_ALLOW_UNFREE=1
-
-npush() {
-  echo "upload"
-  git -C /etc/nixos/nixos-config/ add .
-  git -C /etc/nixos/nixos-config/ commit -a -m "update"
-  git -C /etc/nixos/nixos-config/ push
-}
-
-npull() {
-  echo "download"
-  git -C /etc/nixos/nixos-config/ pull
-}
 
 n() {
   # Block nesting of nnn in subshells
