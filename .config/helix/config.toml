@@ -1,0 +1,41 @@
+theme = "gruvbox_light"
+
+[editor]
+bufferline = "multiple"
+clipboard-provider = "wayland"
+color-modes = true
+cursorline = true
+line-number = "relative"
+middle-click-paste = true
+mouse = false
+rulers = [120]
+scrolloff = 19
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+center = ["file-name", "file-modification-indicator"]
+left = ["mode", "spinner", "read-only-indicator", "file-encoding"]
+right = ["diagnostics", "selections", "position", "position-percentage", "total-line-numbers"]
+separator = "|"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+
+[keys.insert]
+"C-[" = "normal_mode"
+S-ret = "open_below"
+
+[keys.normal]
+C-l = [":write", ":run-shell-command make | tee ~/.myfifo"]
+

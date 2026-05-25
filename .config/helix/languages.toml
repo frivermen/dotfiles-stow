@@ -1,0 +1,6 @@
+[[language]]
+name = "python"
+
+[language.indent]
+tab-width = 2
+unit = "  "
