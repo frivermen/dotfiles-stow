@@ -122,3 +122,5 @@ u() {
   fi
 }
 
+export PATH=/usr/local/cuda-13.3/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-13.3/lib64:$LD_LIBRARY_PATH
