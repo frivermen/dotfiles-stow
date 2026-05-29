@@ -1,0 +1,11 @@
+[Unit]
+Description=ciadpi
+After=graphical-session.target
+BindsTo=graphical-session.target
+
+[Service]
+ExecStart=/home/frivermen/.bin/ciadpi -d1 -s4 -d8 -s1+s -d5+s -s10+s -d20+s -a1
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

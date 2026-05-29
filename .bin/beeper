@@ -1,0 +1,27 @@
+#!/bin/bash
+# Аргументы: $1 = длительность одного гудка в миллисекундах, $2 = количество гудков
+DURATION_MS="${1:-500}"
+COUNT="${2:-1}"
+
+# Переводим миллисекунды в секунды для sox
+DURATION_SEC=$(awk "BEGIN {printf \"%.3f\", $DURATION_MS/1000}")
+
+# Сохраняем текущую громкость и состояние mute канала Master
+old_vol=$(amixer get Master | awk -F'[][]' '/Playback/ {print $2; exit}')
+old_mute=$(amixer get Master | grep -q '\[off\]' && echo mute || echo unmute)
+
+# Принудительно включаем звук и выставляем громкость 100%
+amixer -q set Master 100% unmute
+
+# Воспроизводим сигнал нужное количество раз
+if [ "$COUNT" -eq 1 ]; then
+    play -q -n synth "$DURATION_SEC" sine 2800
+else
+    # Для нескольких гудков: длительность каждого DURATION_SEC, пауза равна длительности гудка,
+    # количество повторений = COUNT - 1 (так как первый гудок уже есть)
+    REPEATS=$((COUNT - 1))
+    play -q -n synth "$DURATION_SEC" sine 2800 pad 0 "$DURATION_SEC" repeat "$REPEATS"
+fi
+
+# Восстанавливаем исходные настройки
+amixer -q set Master "$old_vol" "$old_mute"

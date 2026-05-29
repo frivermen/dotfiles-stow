@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for beeper10
+
+[Timer]
+Unit=beeper10.service
+AccuracySec=1s
+OnCalendar=Mon..Fri *-*-* 11:50:00 Asia/Yekaterinburg
+OnCalendar=Mon..Fri *-*-* 15:50:00 Asia/Yekaterinburg
+
+[Install]
+WantedBy=timers.target

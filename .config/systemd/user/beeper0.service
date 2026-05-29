@@ -1,0 +1,7 @@
+[Unit]
+Description=Work beep 0 minutes before end
+
+[Service]
+Type=oneshot
+User=frivermen
+ExecStart=/home/frivermen/dotfiles-stow/.bin/beeper 1000 1
