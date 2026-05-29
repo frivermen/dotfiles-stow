@@ -4,6 +4,7 @@ After=graphical-session.target
 BindsTo=graphical-session.target
 
 [Service]
+# it is not realy some secret, just random. used only 127.0.0.1
 ExecStart=/home/frivermen/.bin/tg-ws-proxy --secret e74afa05994ddfcc6d1af0a996ba0211
 Restart=on-failure
 
