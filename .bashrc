@@ -128,3 +128,4 @@ export LD_LIBRARY_PATH=/usr/local/cuda-13.3/lib64:$LD_LIBRARY_PATH
 # Added by Hugging Face CLI installer
 export PATH="/home/frivermen/.local/bin:$PATH"
 export PATH="/home/frivermen/git/stable-diffusion.cpp/build/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
