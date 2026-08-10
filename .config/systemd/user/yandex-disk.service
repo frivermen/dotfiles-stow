@@ -1,0 +1,13 @@
+[Unit]
+Description=Yandex Disk Service
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/yandex-disk start
+ExecStop=/usr/bin/yandex-disk stop
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

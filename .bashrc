@@ -28,7 +28,9 @@ RESET='\[\e[00m\]'
 # if root ? set red : set green
 (( EUID == 0 )) && MAIN=$RED || MAIN=$GREEN
 PS1='[\t] '$MAIN'[\u] '$RESET'in '$MAIN'[\w]\n \$ '$RESET
-PATH="$PATH:~/bin"
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r;"
 export EDITOR=hx
@@ -129,3 +131,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-13.3/lib64:$LD_LIBRARY_PATH
 export PATH="/home/frivermen/.local/bin:$PATH"
 export PATH="/home/frivermen/git/stable-diffusion.cpp/build/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
