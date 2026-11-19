@@ -4,7 +4,9 @@ After=graphical-session.target
 BindsTo=graphical-session.target
 
 [Service]
-ExecStart=/home/frivermen/.bin/ciadpi -d1 -s4 -d8 -s1+s -d5+s -s10+s -d20+s -a1
+#ExecStart=/home/frivermen/.bin/ciadpi -r5+s -s25+s -a1 -At,r,s -s50 -r5+s -s50+s -a1
+ExecStart=/home/frivermen/.bin/ciadpi -o1 -r-5+se -a1
+#ExecStart=/home/frivermen/.bin/ciadpi -d1 -s4 -d8 -s1+s -d5+s -s10+s -d20+s -a1
 Restart=on-failure
 
 [Install]
